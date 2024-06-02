@@ -2,10 +2,16 @@
 using System.Threading.Tasks;
 
 namespace GameServer.Hubs {
-    public class ShipHub : StreamingHubBase<IShipHub, IShipHubReceiver>, IShipHub {
+    public class ShipHub : StreamingHubBase<IShipHub, IShipHubReceiver>, IShipHub
+    {
         private IGroup room;
         private string userName;
         IInMemoryStorage<string> storage;
+
+        public Task JoinAsync(string roomName, string userName)
+        {
+            throw new System.NotImplementedException();
+        }
 
         public async Task LeaveAsync() {
             Broadcast(room).OnLeave(userName);
